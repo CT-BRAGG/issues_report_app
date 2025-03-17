@@ -6,35 +6,35 @@ author: Carson Bragg; chatgpt
 
 <?php
     session_start();
-    require_once 'database/db_connection.php'; 
+
+    // Include the database connection
+    require_once 'database/db_connection.php'; // Include the PDO database connection
 
     // Handle form submission
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        // Prepare and execute query to retrieve user details based on the email
-        $stmt = $conn->prepare("SELECT id, fname, lname, email, pwd_hash, pwd_salt, admin FROM iss_persons WHERE email = ?");
-        $stmt->bind_param("s", $email);
+        // Prepare the query to retrieve user details based on the email
+        $stmt = $pdo->prepare("SELECT id, fname, lname, email, pwd_hash, pwd_salt, admin FROM iss_persons WHERE email = :email");
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->execute();
-        $stmt->store_result();
         
         // If the email exists in the database
-        if ($stmt->num_rows > 0) {
-            $stmt->bind_result($id, $fname, $lname, $db_email, $db_pwd_hash, $db_pwd_salt, $admin);
-            $stmt->fetch();
+        if ($stmt->rowCount() > 0) {
+            $user = $stmt->fetch();
 
             // Generate MD5 hash of the provided password with the stored salt
-            $password_hash = md5($password . $db_pwd_salt);
+            $password_hash = md5($password . $user['pwd_salt']);
 
             // Verify if the generated hash matches the stored password hash
-            if ($password_hash === $db_pwd_hash) {
+            if ($password_hash === $user['pwd_hash']) {
                 // Password is correct, create a session for the user
-                $_SESSION['user_id'] = $id;
-                $_SESSION['fname'] = $fname;
-                $_SESSION['lname'] = $lname;
-                $_SESSION['email'] = $email;
-                $_SESSION['admin'] = $admin;
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['fname'] = $user['fname'];
+                $_SESSION['lname'] = $user['lname'];
+                $_SESSION['email'] = $user['email'];
+                $_SESSION['admin'] = $user['admin'];
 
                 // Redirect to the issues reporting dashboard or any protected area
                 header('Location: dashboard.php');
@@ -47,12 +47,7 @@ author: Carson Bragg; chatgpt
             // Email doesn't exist in the database
             $error_message = "No account found with that email.";
         }
-
-        $stmt->close();
     }
-
-    // Close the database connection
-    $conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +80,7 @@ author: Carson Bragg; chatgpt
                 <button type="submit" class="login-btn">Login</button>
             </form>
 
-            <p>Don't have an account? <a href="register_new_user.php">Register here</a></p>
+            <p>Don't have an account? <a href="register.php">Register here</a></p>
         </div>
     </body>
 </html>
