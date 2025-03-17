@@ -40,7 +40,7 @@ author: Carson Bragg; chatgpt
             <div class="actions">
                 <h3>What would you like to do?</h3>
                 <ul>
-                    <li><a href="report_issue.php">Report a New Issue</a></li>
+                    <li><a href="report_new_issue.php">Report a New Issue</a></li>
                     <li><a href="view_issues.php">View My Issues</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
