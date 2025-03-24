@@ -1,0 +1,17 @@
+.
+├── dashboard.php
+├── database
+│   ├── db_connection.php
+│   ├── iss_comments.sql
+│   ├── iss_issues.sql
+│   └── iss_persons.sql
+├── functions.php
+├── login.php
+├── logout.php
+├── README.md
+├── register_new_user.php
+├── report_new_issue.php
+└── view_issues.php
+
+2 directories, 12 files
+
