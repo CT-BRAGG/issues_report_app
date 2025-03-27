@@ -54,5 +54,4 @@ This project is an **Issues Reporting Application** designed to help users repor
 - **PHP**: Backend server-side scripting language for handling user authentication, issue creation, and management.
 - **MySQL**: Database for storing user data, issues, and related information.
 - **HTML/CSS**: Frontend structure and styling.
-- **JavaScript (Optional)**: For enhancing interactivity, like dynamic form submission.
 - **Git**: Version control to track code changes.
