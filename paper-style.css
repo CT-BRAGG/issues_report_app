@@ -1,0 +1,208 @@
+
+/* Gruvbox Paper Layout Style - Updated */
+body {
+    background-color: #282828;
+    color: #3c3836;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.back-button {
+    background-color: #504945;
+    color: #ebdbb2;
+    border: none;
+    padding: 6px 12px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.back-button:hover {
+    background-color: #665c54;
+}
+
+/* Reusable paper class */
+.paper {
+    background-color: #f2e5bc; /* lighter tan */
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 40px 60px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    min-height: calc(100vh - 80px); /* ensures it fills most of the screen */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Heading inside the paper */
+.title {
+}
+.paper h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #3c3836;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    border-bottom: 2px solid #d5c4a1;
+    padding-bottom: 0.2em;
+    font-size: 3em;
+}
+.paper h2,
+.paper h3 {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #3c3836;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    border-bottom: 2px solid #d5c4a1;
+    padding-bottom: 0.2em;
+}
+
+/* Optional: Stylize horizontal rules like typewriter breaks */
+.paper hr {
+    border: none;
+    border-top: 1px dashed #a89984;
+    margin: 2em 0;
+}
+
+/* Optional: Table styling for paper documents */
+.paper table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+}
+
+.paper th,
+.paper td {
+    text-align: left;
+    padding: 8px 12px;
+}
+
+.paper th {
+    background-color: #a89984;
+}
+
+.paper tr {
+	background-color: #d4be98 
+}
+
+/*
+.paper tr:nth-child(even) {
+    background-color: #d4be98;
+}
+.paper tr:nth-child(even):hover {
+    background-color: #3c3836;
+    color: #d4be98;
+}
+*/
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #504945;
+    text-align: left;
+}
+.rows:hover {
+    background-color: #3c3836;
+    color: #d4be98;  
+}
+th {
+    background-color: #3c3836;
+}
+form {
+    display: inline;
+    margin: 0;
+}
+.action-buttons button {
+   margin-right: 6px;
+}
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.small-button {
+    background-color: #504945;
+    color: #ebdbb2;
+    border: none;
+    padding: 6px 10px;
+    font-size: 0.9em;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.small-button:hover {
+    background-color: #665c54;
+    color: #d4be98;  
+}
+
+.toDashboard {	
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formButton {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.bottomPageButton {
+    display: flex;
+    align-items: flex-end;
+}
+
+/* Optional: Center forms and inputs within paper */
+.paper form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.paper input,
+.paper textarea,
+.paper select,
+.paper button {
+    font-family: inherit;
+    font-size: 1em;
+    padding: 8px 10px;
+    border: 1px solid #a89984;
+    border-radius: 6px;
+    background-color: #f9f5d7;
+    color: #3c3836;
+}
+
+.paper button {
+    background-color: #504945;
+    color: #ebdbb2;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.paper button:hover {
+    background-color: #665c54;
+}
+.paper a:link { 
+	color: #d8a657; /* unvisited links */
+        text-decoration: none; 
+}
+.paper a:visited { color: #543937; /*visited links */}
+.paper a:hover {
+	color: #e78a4e; /* hover */
+       	text-decoration: none;
+}
+.paper a:active { 
+	color: #fb4934; /*active/clicking*/
+        text-decoration: underline; /* Optional */
+}
+
