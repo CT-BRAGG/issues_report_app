@@ -1,3 +1,10 @@
+<!--
+Edit Person Script
+author: Carson Bragg; chatgpt
+desc: This script is responisble for managing updates to the
+       database in regards to the data of the given person. 
+-->
+
 <?php
 session_start();
 require_once '/var/www/database/issDB/db_connection.php';
