@@ -1,3 +1,11 @@
+<!--
+View Issues Script
+author: Carson Bragg; chatgpt
+desc: Displays a list of open issues. There is an option to also view all
+      issues closed and open. There are also actions avaiable for each item
+      depending on the user's relation to the issue. 
+-->
+
 <?php
 session_start();
 ini_set('display_errors', 1);
