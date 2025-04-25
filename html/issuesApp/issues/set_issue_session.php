@@ -1,3 +1,7 @@
+<!-- 
+this might be an outdated piece of code
+-->
+
 <?php
 session_start();
 
