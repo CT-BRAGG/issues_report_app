@@ -1,3 +1,9 @@
+<!--
+View Person Script
+author: Carson Bragg; chatgpt
+desc: displays the information of the given person id
+-->
+
 <?php
 session_start();
 require_once '/var/www/database/issDB/db_connection.php';
