@@ -1,5 +1,8 @@
 <!--
-
+Redirect to View Issues Script
+author: Carson Bragg; chatgpt
+desc: This script converts the issue id to a parameter in
+      the URL and redirects to the view issue details script. 
 -->
 <?php
 session_start();
