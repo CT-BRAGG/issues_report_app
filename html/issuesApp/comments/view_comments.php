@@ -1,3 +1,10 @@
+<!--
+View Comments Script
+author: Carson Bragg; chatgpt
+desc: Displays a list of every comment with links to the
+      details of the related issue.
+-->
+
 <?php
 session_start();
 ini_set('display_errors', 1);
