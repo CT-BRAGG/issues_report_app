@@ -1,3 +1,11 @@
+<!--
+Report New Issue Script
+author: Carson Bragg; chatgpt
+desc: This script allows a user to report a new issue
+      by using a form to gather data.The data is then 
+      inserted into the database via a query. 
+-->
+
 <?php
 session_start();
 require_once '/var/www/database/issDB/db_connection.php'; // This should create $pdo (PDO instance)
