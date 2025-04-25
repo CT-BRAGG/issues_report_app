@@ -18,6 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
+    if (substr($email, -9) !== "@svsu.edu") {
+	    echo "not an svsu email.";
+            exit;
+    }
+
     // Check if email already exists
     $stmt = $pdo->prepare("SELECT id FROM iss_persons WHERE email = ?");
     $stmt->execute([$email]);

@@ -1,3 +1,9 @@
+<!--
+Report Issue Script
+author: Carson Bragg; chatgpt
+desc: This script is responsible for creating new issues. 
+-->
+
 <?php
 session_start();
 require_once '/var/www/database/issDB/db_connection.php';
@@ -7,7 +13,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit();
 }
 
@@ -71,18 +77,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 VALUES (:short_description, :long_description, :priority, :org, :project, :open_date, :close_date, :per_id)
             ");
             $stmt->execute([
-                'short_description' => $short_description,
-                'long_description' => $long_description,
-                'priority' => $priority,
-                'org' => $org,
-                'project' => $project,
-                'open_date' => $open_date,
-                'close_date' => $close_date !== '' ? $close_date : null,
-                'per_id' => $_SESSION['user_id']
+                ':short_description' => $short_description,
+                ':long_description' => $long_description,
+                ':priority' => $priority,
+                ':org' => $org,
+                ':project' => $project,
+                ':open_date' => $open_date,
+                ':close_date' => $close_date !== '' ? $close_date : null,
+                ':per_id' => $_SESSION['user_id']
             ]);
 
             $_SESSION['issue_id'] = $pdo->lastInsertId();
-            header("Location: view_issue_detail.php");
+	    $issue_id = $_SESSION['issue_id'];
+            header("Location: view_issue_detail.php?id=$issue_id");
             exit();
         } catch (PDOException $e) {
             $errors['db'] = "Database error: " . $e->getMessage();
@@ -106,49 +113,56 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </script>
 </head>
 <body>
-<div class="paper">
-    <h2>Report a New Issue</h2>
+	<div class="paper">
+    		<h2>Report a New Issue</h2>
 
-    <form action="report_new_issue.php" method="post">
-        <label for="short_description">Short Description:</label>
-        <input type="text" id="short_description" name="short_description"
-               maxlength="<?= $max_lengths['short_description'] ?>" required
-               value="<?= htmlspecialchars($short_description) ?>">
+    		<form action="report_new_issue.php" method="post">
+        		<label for="short_description">Issue Title:</label>
+        		<input type="text" id="short_description" name="short_description" 
+					maxlength="<?= $max_lengths['short_description'] ?>" 
+					value="<?= htmlspecialchars($short_description) ?>"
+					required>
+        		<label for="long_description">Issue Description:</label>
 
-        <label for="long_description">Long Description:</label>
-        <textarea id="long_description" name="long_description" rows="6" required><?= 
-            htmlspecialchars($long_description) ?></textarea>
+			<textarea id="long_description" name="long_description" 
+					rows="6" required>
+				<?= htmlspecialchars($long_description) ?>
+			</textarea>
+        		<label for="priority">Priority:</label>
 
-        <label for="priority">Priority:</label>
-        <select id="priority" name="priority" required>
-            <option value="">Select priority</option>
-            <?php foreach (['Low', 'Medium', 'High'] as $p): ?>
-                <option value="<?= $p ?>" <?= $priority === $p ? 'selected' : '' ?>><?= $p ?></option>
-            <?php endforeach; ?>
-        </select>
+        		<select id="priority" name="priority" required>
+            		<option value="">Select priority</option>
+            		<?php foreach (['Low', 'Medium', 'High'] as $p): ?>
+				<option value="<?= $p ?>" <?= $priority === $p ? 'selected' : '' ?>>
+				<?= $p ?>
+				</option>
+            		<?php endforeach; ?>
+        		</select>
 
-        <label for="org">Organization:</label>
-        <input type="text" id="org" name="org" maxlength="<?= $max_lengths['org'] ?>" required
-               value="<?= htmlspecialchars($org) ?>">
+        		<label for="org">Organization:</label>
+			<input type="text" id="org" name="org" 
+					maxlength="<?= $max_lengths['org'] ?>" required 
+					value="<?= htmlspecialchars($org) ?>">
 
-        <label for="project">Project:</label>
-        <input type="text" id="project" name="project" maxlength="<?= $max_lengths['project'] ?>" required
-               value="<?= htmlspecialchars($project) ?>">
+        		<label for="project">Project:</label>
+			<input type="text" id="project" name="project" 
+					maxlength="<?= $max_lengths['project'] ?>" required
+               				value="<?= htmlspecialchars($project) ?>">
 
-        <label for="open_date">Open Date (YYYY-MM-DD):</label>
-        <input type="date" id="open_date" name="open_date" required
-               value="<?= htmlspecialchars($open_date) ?>">
+        		<label for="open_date">Open Date (YYYY-MM-DD):</label>
+        		<input type="date" id="open_date" name="open_date" required
+               				value="<?= htmlspecialchars($open_date) ?>">
 
-        <label for="close_date">Close Date (YYYY-MM-DD):</label>
-        <input type="date" id="close_date" name="close_date"
-               value="<?= htmlspecialchars($close_date) ?>">
+        		<label for="close_date">Close Date (YYYY-MM-DD):</label>
+        		<input type="date" id="close_date" name="close_date"
+               				value="<?= htmlspecialchars($close_date) ?>">
 
-        <div style="display: flex; gap: 12px;">
-            <button type="submit">Save Issue</button>
-            <button type="button" onclick="window.location.href='view_issues.php'">Cancel</button>
-        </div>
-    </form>
-</div>
+        		<div style="display: flex; gap: 12px;">
+            			<button type="submit">Save Issue</button>
+				<button type="button" onclick="window.location.href='view_issues.php'">Cancel</button>
+        		</div	>
+    		</form>
+	</div>
 </body>
 </html>
 
