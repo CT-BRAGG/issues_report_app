@@ -60,11 +60,11 @@ author: Carson Bragg; chatgpt
             <div class="actions">
                 <h3>What would you like to do?</h3>
 		<ul>
-			<li><a href="">View My Account Info</a></li>
-			<li><a href="">View My Submitted Issues</a></li>
+			<li><a href="view_account_info.php">View My Account Info</a></li>
+			<!-- <li><a href="">View My Submitted Issues</a></li> -->
 			<li><a href="./issues/view_issues.php">View All Submitted Issues</a></li>
-			<li><a href="">View All Accounts</a></li>
-			<li><a href="">View All Comments</a></li>
+			<li><a href="./person/view_people.php">View All Accounts</a></li>
+			<li><a href="./comments/view_comments.php">View All Comments</a></li>
 		</ul>
 
 		<!--

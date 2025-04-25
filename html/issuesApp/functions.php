@@ -1,6 +1,9 @@
 <!-- 
 FUNCTIONS SCRIPTS
-desc: global functions
+author: Carson Bragg; chatgpt
+desc: This contains a few global functions
+      used in the website. These might
+      be outdated. 
 -->
 
 <?php
