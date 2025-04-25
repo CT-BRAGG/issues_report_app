@@ -1,3 +1,10 @@
+<!--
+View People Script
+author: Carson Bragg; chatgpt
+desc: displays a list of all users with links to some 
+      information about them. 
+-->
+
 <?php
 session_start();
 require_once '/var/www/database/issDB/db_connection.php'; // Adjust this path as needed
